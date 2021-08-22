@@ -1,0 +1,10 @@
+language: generic
+sudo: required # superuser permissions
+services:
+  - docker
+
+before_install:
+  - docker build -t hatang/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run hatang/docker-react npm run test -- --coverage
